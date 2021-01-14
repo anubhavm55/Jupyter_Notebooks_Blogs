@@ -6,8 +6,8 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title: fastpages
-description: An easy to use blogging platform with support for Jupyter Notebooks.
+title: Learning Deep Learning
+description: This is my journey in trying to make sense of deep learning.
 github_username: anubhavm55
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "Jupyter_Notebooks_Blogs"
