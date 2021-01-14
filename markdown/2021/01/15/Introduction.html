@@ -4,18 +4,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Learning Deep Learning | This is my journey in trying to make sense of deep learning.</title>
+<title>Introduction to deep learning(3rd Semester) | Learning Deep Learning</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Learning Deep Learning" />
+<meta property="og:title" content="Introduction to deep learning(3rd Semester)" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This is my journey in trying to make sense of deep learning." />
-<meta property="og:description" content="This is my journey in trying to make sense of deep learning." />
-<link rel="canonical" href="https://anubhavm55.github.io/Jupyter_Notebooks_Blogs/" />
-<meta property="og:url" content="https://anubhavm55.github.io/Jupyter_Notebooks_Blogs/" />
+<meta name="description" content="My introduction to Deep Learning." />
+<meta property="og:description" content="My introduction to Deep Learning." />
+<link rel="canonical" href="https://anubhavm55.github.io/Jupyter_Notebooks_Blogs/markdown/2021/01/15/Introduction.html" />
+<meta property="og:url" content="https://anubhavm55.github.io/Jupyter_Notebooks_Blogs/markdown/2021/01/15/Introduction.html" />
 <meta property="og:site_name" content="Learning Deep Learning" />
-<meta property="og:image" content="https://anubhavm55.github.io/Jupyter_Notebooks_Blogs/images/logo.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-15T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"https://anubhavm55.github.io/Jupyter_Notebooks_Blogs/","@type":"WebSite","headline":"Learning Deep Learning","image":"https://anubhavm55.github.io/Jupyter_Notebooks_Blogs/images/logo.png","name":"Learning Deep Learning","description":"This is my journey in trying to make sense of deep learning.","@context":"https://schema.org"}</script>
+{"url":"https://anubhavm55.github.io/Jupyter_Notebooks_Blogs/markdown/2021/01/15/Introduction.html","@type":"BlogPosting","headline":"Introduction to deep learning(3rd Semester)","dateModified":"2021-01-15T00:00:00-06:00","datePublished":"2021-01-15T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://anubhavm55.github.io/Jupyter_Notebooks_Blogs/markdown/2021/01/15/Introduction.html"},"description":"My introduction to Deep Learning.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/Jupyter_Notebooks_Blogs/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://anubhavm55.github.io/Jupyter_Notebooks_Blogs/feed.xml" title="Learning Deep Learning" /><link rel="shortcut icon" type="image/x-icon" href="/Jupyter_Notebooks_Blogs/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -67,44 +68,47 @@ window.onload = wrap_img;
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home"><h1 id="posts">Posts</h1>
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Introduction to deep learning(3rd Semester)</h1><p class="page-description">My introduction to Deep Learning.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-15T00:00:00-06:00" itemprop="datePublished">
+        Jan 15, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/Jupyter_Notebooks_Blogs/categories/#markdown">markdown</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Recently I came across a deep learning course that has changed my life forever!!! I am talking about fast.ai’s<a href="https://fast.ai">FastAI</a> “Practical Deep Learning for Coders”.</p>
+<h2 id="first-misunderstanding-deep-learning-only-for-phds">First misunderstanding: Deep Learning only for PhDs</h2>
+
+<p>I started deep learning in my 3rd semester minor project(currently in 6th semester) and I went through a lot of courses on youtube and coursera. At first, it was very exciting to know the maths behind all of this but when I tried to implement it I was unable to do so. I found myself searching tutorials and guides for tensorflow, keras, pytorch but nothing made sense. I was frustrated as I was unable to implement something which I understood. For example, the project that I was working on had the equation for the prediction as<br />
+y(m,t) = Σσ<sub>1</sub>(b+m<em>e<sup>w1</sup>) * σ<sub>2</sub>(b-t</em>e<sup>w2</sup>) * e<sup>w3</sup><br />
+where σ<sub>1</sub> is softplus function and σ<sub>2</sub> is a sigmoid function.<br />
+The above equation clearly states that I have to create all these layers from scratch since all the predefined models do computation of the form b+(some input)*w. Making above architecture seemed so difficult to me and I came to the conclusion that only PhDs understood intricacies of deep learning. So, at last I went to tensorflow keras tutorial, randomly added lots of dense and embedding(lol, it didn’t require any embedding layer, I didn’t even know back then what an embedding layer was) layers for this model, got an accuracy so bad(mape of 1 lakh) and lost all interest in deep learning.</p>
+
+<h2 id="second-misunderstanding-more-epochs-means-more-accuracy">Second misunderstanding: More epochs means more accuracy</h2>
+<p>I remember I used to train the above model for 250 epochs(lmao, its funny now that I know) and leave my laptop for hours thinking that the error would decrease. After taking the fast.ai course, I’ve come across exceptional accuracy by training for only 3 epochs. That is why 250 seems a very large number.</p>
+
+<p>So that was my introduction to deep learning which was not very pleasant as evident.</p>
 
 
-
-  
-
-  <!-- Hide posts if front matter flag hide:true -->
-  
-  
-
-  <!-- Sort posts by rank, then date -->
-  
-  
-  
-
- 
-  
-
-   <!-- Assemble final sorted posts array -->
-  
-  <ul class="post-list"><li><h3>
-    <a class="post-link" href="/Jupyter_Notebooks_Blogs/markdown/2021/01/15/Introduction.html">
-    Introduction to deep learning(3rd Semester)
-    </a>
-</h3><p class="post-meta-description">My introduction to Deep Learning.</p><p class="post-meta">Jan 15, 2021</p>
-</li><li><h3>
-    <a class="post-link" href="/Jupyter_Notebooks_Blogs/jupyter/2020/02/20/test.html">
-    Fastpages Notebook Blog Post
-    </a>
-</h3><p class="post-meta-description">A tutorial of fastpages for Jupyter notebooks.</p><p class="post-meta">Feb 20, 2020</p>
-</li><li><h3>
-    <a class="post-link" href="/Jupyter_Notebooks_Blogs/markdown/2020/01/14/test-markdown-post.html">
-    An Example Markdown Post
-    </a>
-</h3><p class="post-meta-description">A minimal example of using markdown with fastpages.</p><p class="post-meta">Jan 14, 2020</p>
-</li></ul>
-
-    </div>
+  </div><a class="u-url" href="/Jupyter_Notebooks_Blogs/markdown/2021/01/15/Introduction.html" hidden></a>
+</article>
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/Jupyter_Notebooks_Blogs/"></data>
