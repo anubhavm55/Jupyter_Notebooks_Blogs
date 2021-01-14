@@ -39,8 +39,8 @@ baseurl: "/Jupyter_Notebooks_Blogs" # the subpath of your site, e.g. "/blog".
 # Github and twitter are optional:
 minima:
   social_links:
-    twitter: fastdotai
-    github: fastai
+    twitter: anubhavm55
+    github: anubhavm55
 
 # Set this to true to get LaTeX math equation support
 use_math: 
