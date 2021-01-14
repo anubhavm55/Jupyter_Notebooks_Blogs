@@ -1,4 +1,11 @@
-# Introduction to deep learning(3rd Semester)
+---
+toc: false
+layout: post
+description: My introduction to Deep Learning.
+categories: [markdown]
+title: Introduction to deep learning(3rd Semester)
+---  
+
 Recently I came across a deep learning course that has changed my life forever!!! I am talking about fast.ai's[FastAI](https://fast.ai) "Practical Deep Learning for Coders".
 ## First misunderstanding: Deep Learning only for PhDs  
     
