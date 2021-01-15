@@ -66,4 +66,6 @@ I remember I used to train the above model for 250 epochs and leave my laptop fo
 
 So that was my introduction to deep learning which was not very pleasant as evident.    
 
+Comments are welcome. Feel free to inform me about any errors I made. I am still learning.
+
   
