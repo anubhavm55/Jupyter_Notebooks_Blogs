@@ -78,7 +78,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      4 min read
     
 </span></p>
 
@@ -94,16 +94,62 @@ window.onload = wrap_img;
     </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <p>Recently I came across a deep learning course that has changed my life forever!!! I am talking about fast.ai’s <a href="https://fast.ai">FastAI</a> “Practical Deep Learning for Coders”.</p>
+    <p>Recently I came across a deep learning course that has changed my life forever!!! I am talking about fast.ai’s <a href="https://fast.ai">FastAI</a> “Practical Deep Learning for Coders”. I was looking for a course that could explain the “coding” part of deep learning. One of my friend suggested MITs <a href="https://introtodeeplearning.com">“Introduction to deep learning”</a>, its nice but could have been nicer if the code in lab part was also explained. FastAI does that and I call it my spirit course.</p>
+
 <h2 id="first-misunderstanding-deep-learning-only-for-phds">First misunderstanding: Deep Learning only for PhDs</h2>
 
 <p>I started deep learning in my 3rd semester minor project(currently in 6th semester) and I went through a lot of courses on youtube and coursera. At first, it was very exciting to know the maths behind all of this but when I tried to implement it I was unable to do so. I found myself searching tutorials and guides for tensorflow, keras, pytorch but nothing made sense. I was frustrated as I was unable to implement something which I understood. For example, the project that I was working on had the equation for the prediction as<br />
-y(m,t) = Σσ<sub>1</sub>(b+m<em>e<sup>w1</sup>) * σ<sub>2</sub>(b-t</em>e<sup>w2</sup>) * e<sup>w3</sup><br />
+y(m,t) = Σσ<sub>1</sub>(b+m*e<sup>w1</sup>) * σ<sub>2</sub>(b-t*e<sup>w2</sup>) * e<sup>w3</sup><br />
 where σ<sub>1</sub> is softplus function and σ<sub>2</sub> is a sigmoid function.<br />
-The above equation clearly states that I have to create all these layers from scratch since all the predefined models do computation of the form b+(some input)*w. Making above architecture seemed so difficult to me and I came to the conclusion that only PhDs understood intricacies of deep learning. So, at last I went to tensorflow keras tutorial, randomly added lots of dense and embedding(lol, it didn’t require any embedding layer, I didn’t even know back then what an embedding layer was) layers for this model, got an accuracy so bad(mape of 1 lakh) and lost all interest in deep learning.</p>
+The above equation clearly states that I have to create all these layers from scratch since all the predefined models do computation of the form b+(some input)*w. Making above architecture seemed so difficult to me and I came to the conclusion that only PhDs understood intricacies of deep learning. So, at last I went to tensorflow keras tutorial, randomly added lots of dense and embedding(lol, it didn’t require any embedding layer, I didn’t even know back then what an embedding layer was) layers for this model, got an accuracy so bad(mape of 1 lakh) and lost all interest in deep learning.<br />
+For those who are looking for the code to implement above architecture:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">class</span> <span class="nc">DenseLayer1</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Layer</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_output_nodes</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">DenseLayer1</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">n_output_nodes</span><span class="o">=</span><span class="n">n_output_nodes</span>
+
+  <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">W</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">add_weight</span><span class="p">(</span><span class="s">"weight"</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_output_nodes</span><span class="p">])</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">add_weight</span><span class="p">(</span><span class="s">"bias"</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_output_nodes</span><span class="p">])</span> 
+
+  <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">b</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">math</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">W</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">math</span><span class="p">.</span><span class="n">softplus</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+    
+  <span class="k">class</span> <span class="nc">DenseLayer2</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Layer</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_output_nodes</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">DenseLayer2</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">n_output_nodes</span><span class="o">=</span><span class="n">n_output_nodes</span>
+
+  <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">W</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">add_weight</span><span class="p">(</span><span class="s">"weight"</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_output_nodes</span><span class="p">])</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">add_weight</span><span class="p">(</span><span class="s">"bias"</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_output_nodes</span><span class="p">])</span> 
+
+  <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">b</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">math</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">W</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+    
+  <span class="k">class</span> <span class="nc">DenseLayer3</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Layer</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_output_nodes</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">DenseLayer3</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">n_output_nodes</span><span class="o">=</span><span class="n">n_output_nodes</span>
+
+  <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">W</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">add_weight</span><span class="p">(</span><span class="s">"weight"</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">n_output_nodes</span><span class="p">])</span>
+
+  <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">math</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">W</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Let me explain how easy it is to implement above architecture which seemed like a gigantic task back then. I am doing tensorflow because currently I am enrolled in a deep learning course in my college which is taught in tensorflow, but it doesn’t matter, the difference is only in the syntax and one can easily convert to pytorch in a week or so.</p>
+
+<p>In tensorflow, every layer is a defined as a class and the first function is same for all of the 3 layers which defines the number of neurons in that respective layer, a parameter that you have to pass in the variable n_output_nodes. Second function is also same, randomly initializes weights and biases. The shape of these values can change depending on your data. For our case, we require only one weight for one input and we have n_output_nodes neurons so shape is defined like that. If, on the other hand we had images as inputs then for one input(one image) we may keep weights for each of the pixels in the image, therefore we would have defined the shape as [no. of pixels, n_out_nodes]. For those who do not understand this, what we generally do is convert image into 2d matrix and then convert it to 1d array by keeping all the values from the matrix contiguously for easy computation. Then the third function, which defines what function we want to apply to inputs and parameters(other name for weights and biases combined). You can perform operations on these custom layers now as you perform on predefined layers. That is it, that is what I had to do back then, if only I found a course which explained the coding part rather than the math part.</p>
 
 <h2 id="second-misunderstanding-more-epochs-means-more-accuracy">Second misunderstanding: More epochs means more accuracy</h2>
-<p>I remember I used to train the above model for 250 epochs(lmao, its funny now that I know) and leave my laptop for hours thinking that the error would decrease. After taking the fast.ai course, I’ve come across exceptional accuracy by training for only 3 epochs. That is why 250 seems a very large number.</p>
+<p>I remember I used to train the above model for 250 epochs and leave my laptop for hours thinking that the error would decrease. Back then I thought that infinite epochs could make a perfect 100% accurate model. After taking the fast.ai course, I’ve come across exceptional accuracy by training for only 3 epochs. That is why 250 seems a very large number.</p>
 
 <p>So that was my introduction to deep learning which was not very pleasant as evident.</p>
 
