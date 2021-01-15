@@ -3,7 +3,7 @@ toc: false
 layout: post
 description: My introduction to Deep Learning.
 categories: [markdown]
-title: Introduction to deep learning(4th Semester)
+title: Introduction to Deep Learning(4th Semester)
 ---  
 
 Recently I came across a deep learning course that has changed my life forever!!! I am talking about fast.ai's [FastAI](https://fast.ai) "Practical Deep Learning for Coders". I was looking for a course that could explain the "coding" part of deep learning. One of my friend suggested MITs ["Introduction to deep learning"](https://introtodeeplearning.com), its nice but could have been nicer if the code in lab part was also explained. FastAI does that and I call it my spirit course.
